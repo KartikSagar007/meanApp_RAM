@@ -1,11 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express'); //express is a server
+const bodyParser = require('body-parser'); // is a middle ware to handle form data
 const path = require('path');
 const api = require('./server/routes/api');
 const sagar = require('./server/routes/sagar');
 const port = 3000;
 const app = express();
-
+console.log("dir name: ",__dirname);
 app.use(express.static(path.join(__dirname,'dist'))); //joining the path of the 
 //current directory with dist folder..this basically gives express the access to the distributable folder
 
@@ -23,3 +23,5 @@ res.sendFile(path.join(__dirname,'dist/index.html'));
 app.listen(port,function(){ //in server.js if listen to requests on 3000
     console.log("server running on localhost:" + port + "(server.js file)"); //if successfull
 })
+
+//npm install --save express body-parser 
