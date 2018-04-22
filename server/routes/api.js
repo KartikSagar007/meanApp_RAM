@@ -25,6 +25,12 @@ mongoose.connect(db,
         else{console.log("mongodb connection successful!");}
 }); 
 
+//for default api
+router.get('/',function(req,res){
+    console.log("localhost:3000/api called");
+    res.send("only /api is called");
+});
+
 //to get all videos
 router.get('/videos',function(req,res){
     console.log("get request for all videos");
