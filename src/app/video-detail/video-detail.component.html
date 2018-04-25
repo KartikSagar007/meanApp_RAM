@@ -1,6 +1,15 @@
-<p>
-  video-detail works!
-</p>
-<p>{{video.title}}</p>
-<p>{{video.description}}</p>
-<p>{{video.url}}</p>
+<!-- make sure you are adding FormsModule in app.module.ts for ngModel work -->
+<div>
+  <form>
+    <div *ngIf="editTitle" class="form-group">
+      <input type="input" class="form-control" name="title" required placeholder="title" [(ngModel)]="video.title">
+    </div>
+    <h3 *ngIf="!editTitle" (click)="onTitleClick()">{{video.title}}</h3>
+    <div class="form-group">
+      <input type="input" class="form-control" name="url" required placeholder="url" [(ngModel)]="video.url">
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" name="description" required placeholder="description" [(ngModel)]="video.description"></textarea>
+    </div>
+  </form>
+</div>
