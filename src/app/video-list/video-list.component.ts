@@ -18,6 +18,7 @@ export class VideoListComponent implements OnInit {
 
   ngOnInit() {
     this.videosLL = this.videosWala;
+    debugger;    
   }
 
   onSelect(vid: Video){

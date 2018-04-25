@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
-
+import { FormsModule } from '@angular/forms'; //for ngModule to be worked we need to import it
+import { HttpModule } from '@angular/http'; //In order to use Http in your app you will need to add the HttpModule to your app.module.ts
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -22,7 +22,8 @@ import { VideoDetailComponent } from './video-detail/video-detail.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

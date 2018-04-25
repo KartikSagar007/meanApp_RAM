@@ -3,7 +3,9 @@
     <video-detail *ngIf="selectedVideo" [video]="selectedVideo"></video-detail>
   </div>
   <div class="col-sm-3">
+from video center= {{videosList}}
+    
     <!--here we are capturing the SelectVideo event>> when SelectVideo event will be raised then we will call onSelectVideo and pass the event -->
-    <video-list (SelectVideo)="onSelectVideo($event)" [videosL]="videosList"></video-list> 
+    <video-list *ngIf="videosList" (SelectVideo)="onSelectVideo($event)" [videosL]="videosList"></video-list> 
   </div>
 </div>

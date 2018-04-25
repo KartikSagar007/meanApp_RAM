@@ -7,8 +7,11 @@ export class VideoService {
 
   private _getUrl = "/api/videos";
   constructor(private _http: Http) { }
+
   getVideos() {
     return this._http.get(this._getUrl)
-      .map((response: Response) => response.json); //the response has to be mapped to json
+      .map((response: Response) => {
+        return response.json();
+      }); //the response has to be mapped to json
   }
 }
