@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+// import { EventEmitter } from 'events';
 
 @Component({
   selector: 'video-detail',
@@ -8,7 +10,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class VideoDetailComponent implements OnInit {
   private editTitle : boolean = false;
   @Input() video;
-  constructor() { }
+  @Output() updateVideoEvent = new EventEmitter;
+  @Output() deleteVideoEvent = new EventEmitter;
+
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }
@@ -19,6 +24,16 @@ export class VideoDetailComponent implements OnInit {
   
   onTitleClick(){
     this.editTitle = true;
+  }
+
+  getEmbedURL(item){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(item);
+  }
+  updateVideo(){
+    this.updateVideoEvent.emit(this.video);
+  }
+  deleteVideo(){
+    this.deleteVideoEvent.emit(this.video)
   }
 
 }

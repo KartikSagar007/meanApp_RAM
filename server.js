@@ -1,4 +1,5 @@
 const express = require('express'); //express is a server
+const helmet = require('helmet');
 const bodyParser = require('body-parser'); // is a middle ware to handle form data
 const path = require('path');
 const api = require('./server/routes/api');
@@ -8,7 +9,10 @@ const app = express();
 console.log("dir name: ",__dirname);
 app.use(express.static(path.join(__dirname,'dist'))); //joining the path of the 
 //current directory with dist folder..this basically gives express the access to the distributable folder
-
+app.use(helmet());
+app.use(helmet({    //not working for in-a-frame-because-it-set-x-frame-options-to-sameorigin-in-node-app
+    frameguard:false    //You can disable a middleware that's normally enabled by default. This will disable frameguard but include the other defaults.
+}));
 app.use(bodyParser.urlencoded({extended:true})); //parses the text as urlencoded data
 
 app.use(bodyParser.json()); //it parses the text as json

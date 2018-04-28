@@ -9,8 +9,14 @@ export class SafePipe implements PipeTransform {
   // transform(value: any, args?: any): any {
   //   return null;
   // }
-  transform(url:any){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  transform(_url:any){
+    if (!_url) { return ''; }
+    if(_url){
+      _url = _url.replace('watch?v=','embed/');
+    }
+    // debugger;
+
+    return this.sanitizer.bypassSecurityTrustResourceUrl(_url);
   }
 
 }
